@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: APIsProject
+  profiles:
+    active: dev
+

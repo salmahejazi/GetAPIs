@@ -1,0 +1,55 @@
+server:
+  port: 32213
+
+spring:
+  security:
+    user:
+      name: msuser
+      password: S3curity1@3
+  main:
+    banner-mode: off
+
+management:
+  info.git.mode: full
+  endpoints:
+    web.exposure.include: '*'
+  endpoint:
+    health.show-details: always
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+opentracing:
+  jaeger:
+    log-spans: true
+    udp-sender:
+      host: localhost
+      port: 6831
+      size: 0
+
+application:
+  version: @project.version@
+  security:
+    exclusions: /v3/api-docs/**, /swagger*/**, /actuator/**
+
+enable:
+  ms-authorization:
+    filter: true
+
+logging:
+  level:
+    sa.com.stc:
+      paymentvalidation: DEBUG
+      framework.filter.LoggingFilter: DEBUG
+
+validity:
+  mobile:
+    env: test
+
